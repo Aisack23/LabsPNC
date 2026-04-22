@@ -1,7 +1,7 @@
 package labos.pnc.lab01.service;
 
 import labos.pnc.lab01.domain.model.BOW;
-import labos.pnc.lab01.repository.ProductRepository;
+import labos.pnc.lab01.repository.BowRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class Services {
-    private final ProductRepository productRepository;
+    private final BowRepository productRepository;
 
     public List<BOW> findAll() {
         return productRepository.findAll();
