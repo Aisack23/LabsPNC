@@ -52,7 +52,7 @@ public class SpecimensList {
                 .name("Licker")
                 .virus("T-Virus")
                 .danger(1)
-                .weakness("Fire")
+                .weakness("Brain")
                 .status("Death")
                 .lastLocation("Twon")
                 .originPossibleLocation("Biblio")
