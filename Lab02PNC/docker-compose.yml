@@ -1,0 +1,40 @@
+services:
+
+  db:
+
+    image: postgres:16-alpine
+
+    container_name: wizard-db
+
+    restart: always
+
+    environment:
+      POSTGRES_DB: wizardsdb
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+
+    build: .
+
+    container_name: wizard-api
+
+    depends_on:
+      - db
+
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/wizardsdb
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+    ports:
+      - "9091:9091"
+
+volumes:
+  postgres_data:
