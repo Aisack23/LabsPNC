@@ -11,6 +11,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: Lab02PNC
+
     steps:
 
       - name: Checkout Repository
@@ -25,8 +29,8 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ./Lab02PNC
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USER }}/wizard:latest
-            ${{ secrets.DOCKERHUB_PASS }}/wizard:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USER }}/wizard:${{ github.sha }}
